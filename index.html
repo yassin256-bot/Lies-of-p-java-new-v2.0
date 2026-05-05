@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+    }
+
+
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      background-image: url("https://images4.alphacoders.com/135/1355515.jpeg");
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.7)
+      );
+      z-index: -1;
+    }
+
+    .content {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 40px 50px;
+      width: 360px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card h1 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #000;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);
+    }
+
+    
+    #menu {
+      display: none;
+      margin-top: 25px;
+    }
+
+    #menu a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: white;
+      opacity: 0.85;
+    }
+
+    #menu a:hover {
+      opacity: 1;
+    }
+
+    #returnBtn {
+  display: none;
+  margin-top: 10px;
+  }
+
+    .logout {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-bg"></div>
+  <div class="overlay"></div>
+
+  <div class="content">
+    <div class="card">
+
+      <h1>Bienvenue</h1>
+      <p>Connectez-vous pour accéder au menu</p>
+      <button id="returnBtn" class="logout" onclick="goBack()">
+  Retourner
+</button>
+
+      <button id="loginBtn" onclick="window.location.href='login.html'">
+        Se connecter
+      </button>
+
+      <div id="menu">
+
+        <button class="logout" onclick="logout()">Déconnexion</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+  document.getElementById("menu").style.display = "block";
+  document.getElementById("loginBtn").style.display = "none";
+  document.getElementById("returnBtn").style.display = "block";
+}
+
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("currentUser");
+      location.reload();
+    }
+
+    function goBack() {
+  window.location.href = "iindex.html";
+  }
+
+  </script>
+
+</body>
+</html>
