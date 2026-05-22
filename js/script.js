@@ -30,7 +30,7 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
   localStorage.setItem("isLoggedIn", "true");
   localStorage.setItem("currentUser", email);
 
-  window.location.href = "iindex.html";
+  window.location.href = "html/iindex.html";
 });
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
