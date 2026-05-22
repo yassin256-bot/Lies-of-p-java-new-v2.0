@@ -49,6 +49,9 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     return;
   }
 
+    { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+const supabase = createClient(https://flynusmgbjzodqmqtwww.supabase.co/rest/v1/, sb_publishable_hZwGI25ej_tHh7k5pmA2_A_bB9__YpT);
+                              
   localStorage.setItem("isLoggedIn", "true");
   localStorage.setItem("currentUser", email);
 
