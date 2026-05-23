@@ -429,21 +429,21 @@ filter: brightness(1.2);
     window.location.href = "html/login.html";
   }
 
-  <script>
-  // Redirect to login if not logged in
+ <script>
   if (localStorage.getItem("isLoggedIn") !== "true") {
     window.location.href = "html/login.html";
   } else {
-    // Show Bonjour popup
     const popup = document.getElementById("bonjourPopup");
     const name = localStorage.getItem("userName") || "Utilisateur";
+
     document.getElementById("bonjourName").textContent = "Bonjour " + name + " !";
     popup.style.display = "block";
 
-    // Hide after 3 seconds
     setTimeout(() => {
       popup.style.display = "none";
     }, 3000);
+  }
+</script>
       { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 const supabase = createClient(https://flynusmgbjzodqmqtwww.supabase.co/rest/v1/, sb_publishable_hZwGI25ej_tHh7k5pmA2_A_bB9__YpT);
   }
