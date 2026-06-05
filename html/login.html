@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <title>Connexion / Inscription</title>
   <style>
-    /* ----------------- Reset & Body ----------------- */
     html, body {
       height: 100%;
       margin: 0;
       font-family: Arial, sans-serif;
     }
 
-    /* ----------------- Background Image ----------------- */
     body {
       background-image: url("https://images4.alphacoders.com/135/1355515.jpeg");
       background-size: cover;
@@ -20,7 +18,6 @@
       position: relative;
     }
 
-    /* ----------------- Overlay Noir Semi-Transparent ----------------- */
     body::before {
       content: "";
       position: absolute;
@@ -29,7 +26,6 @@
       z-index: 0;
     }
 
-    /* ----------------- Content Box ----------------- */
     .content {
       position: relative;
       z-index: 1; /* au-dessus de l'overlay */
@@ -105,14 +101,11 @@
   </form>
 </div>
 
-<!-- Inclusion de votre script global si nécessaire -->
 <script src="script.js"></script>
 
-<!-- Script d'authentification Supabase (type="module" obligatoire pour l'import) -->
 <script type="module">
   import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-  // Configuration de Supabase (URLs et clés bien entourées de guillemets)
   const supabaseUrl = 'https://flynusmgbjzodqmqtwww.supabase.co';
   const supabaseKey = 'sb_publishable_hZwGI25ej_tHh7k5pmA2_A_bB9__YpT';
   const supabase = createClient(supabaseUrl, supabaseKey);
@@ -122,7 +115,6 @@
   const loginError = document.getElementById("loginError");
   const registerError = document.getElementById("registerError");
 
-  // GESTION DE LA CONNEXION
   loginForm.addEventListener("submit", async function(e) {
     e.preventDefault();
     loginError.textContent = "";
@@ -130,7 +122,6 @@
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginPassword").value;
 
-    // Connexion officielle via Supabase Auth
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -139,16 +130,13 @@
     if (error) {
       loginError.textContent = "Erreur : " + error.message;
     } else {
-      // Stockage local de secours au cas où index l'utilise
       localStorage.setItem("userName", data.user.email);
       localStorage.setItem("isLoggedIn", "true");
-      
-      // Redirection
+
       window.location.href = "iindex.html";
     }
   });
 
-  // GESTION DE L'INSCRIPTION
   registerForm.addEventListener("submit", async function(e) {
     e.preventDefault();
     registerError.textContent = "";
@@ -163,7 +151,6 @@
       return;
     }
 
-    // Inscription officielle via Supabase Auth
     const { data, error } = await supabase.auth.signUp({
       email: email,
       password: password,
